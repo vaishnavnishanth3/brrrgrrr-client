@@ -1,0 +1,60 @@
+.about {
+    margin: 20px;
+    margin-left: 30px; /* Adjusted left margin for smaller screens */
+}
+
+.title {
+    text-align: left;
+}
+
+.app-name {
+    border: none;
+    color: #00ffff;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS';
+}
+
+.app-name:hover {
+    border-bottom: 1px solid #00FFFF;
+    transition: border-bottom 1.5s ease;
+}
+
+.content {
+    margin: 20px; /* Reduced margin for smaller screens */
+}
+
+.content p {
+    text-align: left;
+    color: white;
+    font-size: 18px; /* Reduced font size for smaller screens */
+}
+
+.burger {
+    float: right;
+    margin: 10px; /* Reduced margin for smaller screens */
+}
+
+.city {
+    float: left;
+    margin: 10px; /* Reduced margin for smaller screens */
+}
+
+@media (min-width: 600px) {
+    .about {
+        margin-left: 60px; /* Reverted left margin for larger screens */
+    }
+
+    .content {
+        margin: 60px;
+    }
+
+    .content p {
+        font-size: 20px; /* Reverted font size for larger screens */
+    }
+
+    .burger,
+    .city {
+        margin: 20px; /* Reverted margin for larger screens */
+    }
+}
