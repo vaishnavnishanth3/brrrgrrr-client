@@ -190,10 +190,8 @@ export default function Search()
             <div className="hot-ready">
                 <h2>
                     <span className="hot">
-                        Hot
-                    </span> 
-                    
-                    and Ready!
+                        Hot 
+                    </span> and Ready!
                 </h2>
             </div>
             

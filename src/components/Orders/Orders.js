@@ -256,28 +256,22 @@ export default function Orders()
                                     }
                                 </div>
                         ) : (
-                            <p>No orders found</p>
+                            <h1>No orders found</h1>
                         )}
                     </div>
                 </div>
       ) : isLoggedIn && orders.length === 0 ? (
-                <div>
-                    <h1 className="myorders-title">My Orders</h1>
-                    
+                <div>                 
                     <div className="orders-listed">
                         <div className="orders-made">
                         <h3>
-                            No orders made yet 
-                            <br />
-                            Login to view your orders!
+                            No orders made yet!
                         </h3>
                   </div>
               </div>
           </div>
       ) : (
-          <div>
-              <h1 className="myorders-title">My Orders</h1>
-              
+          <div>              
               <div className="orders-listed">
                   <div className="orders-made">
                       <h3>Please log in to view your orders.</h3>
