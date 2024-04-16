@@ -1,9 +1,10 @@
-import React from "react";
-import Card from "../Card/Card";
+import React from "react"
+import Card from "../Card/Card"
 
-import "./Search.css";
+import "./Search.css"
 
-export default function Search() {
+export default function Search() 
+{
 
     const burgerList = {
         "burgers": [
@@ -173,20 +174,42 @@ export default function Search() {
     return (
         <div className="search1">
             <h1>Brrrgrrr for your favourite Burger!</h1>
+            
             <div className="search-area">
-                <input id="browseInput" type="text" placeholder="Search..."/><button>Brrrgrrr</button> 
+                <input 
+                    id="browseInput" 
+                    type="text" 
+                    placeholder="Search..."
+                />
+                
+                <button>
+                    Brrrgrrr
+                </button> 
             </div>
+            
             <div className="hot-ready">
-                <h2><span className="hot">Hot</span> and Ready!</h2>
+                <h2>
+                    <span className="hot">
+                        Hot
+                    </span> 
+                    
+                    and Ready!
+                </h2>
             </div>
+            
             <div className="burger-list">
-            {burgerList.burgers.map (burger => 
-                <div className="cards">
-                    <Card key={burger.id} title={burger.name} image={burger.image} price={burger.price} />
-                </div>
-                )
-            }
-        </div>
+                {burgerList.burgers.map (burger => 
+                    <div className="cards">
+                        <Card 
+                            key={burger.id} 
+                            title={burger.name} 
+                            image={burger.image} 
+                            price={burger.price} 
+                        />
+                    </div>
+                    )
+                }
+            </div>
         </div>
     )
-};
+}

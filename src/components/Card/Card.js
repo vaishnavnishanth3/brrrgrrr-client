@@ -1,21 +1,36 @@
-import React from "react";
+import React from "react"
 
 import "./Card.css"
 
-export default function Card(item) {
+export default function Card(props) 
+{
     function handleClick () {
         
-    };
+    }
 
-    return(
+    return (
         <div className="Card">
             <div className="card-image">
-                <img src={item.image} alt={item.title}/>
+                <img 
+                    src={props.image} 
+                    alt={props.title}/>
             </div>
+            
             <div className="card-body">
-                <h5>{item.title}</h5>
-                <p><span className="card-price">₹{item.price}</span></p>
-                <button className="order-button" onClick={handleClick}>Order</button>
+                <h5>
+                    {props.title}
+                </h5>
+                
+                <p>
+                    <span className="card-price">
+                        ₹{props.price}
+                    </span>
+                </p>
+                <button 
+                    className="order-button" 
+                    onClick={handleClick}>
+                        Order
+                </button>
             </div>
         </div>
     )

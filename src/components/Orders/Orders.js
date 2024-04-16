@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "./Orders.css";
-import axios from "axios";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+
+import "./Orders.css"
+
 
   const burgerList = {
     "burgers": [
@@ -165,89 +167,125 @@ import axios from "axios";
             "image": "https://media-cdn.tripadvisor.com/media/photo-s/11/f1/e5/43/smoked-bacon-jam-burger.jpg"
         }   
     ]
-};
-
-function Orders() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user && user.userData) {
-      setIsLoggedIn(true);
-      const userOrders = user.userData.orders;
-      setOrders(userOrders);
-    }
-  }, []);
-
-  const handleCancel = async (index) => {
-    try {
-        const email = JSON.parse(localStorage.getItem("user")).userData.email;
-        const response = await axios.delete(`/delete-order/${email}/${index}`);
-        
-        setOrders(response.data.user.orders);
-        
-        console.log("Order canceled");
-    } catch (error) {
-        console.error("Error canceling order:", error);
-    }
-};
-
-    useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user && user.userData) {
-      setIsLoggedIn(true);
-      const userOrders = user.userData.orders;
-      setOrders(userOrders);
-    }
-  }, []);
-
-  return (
-    <div className="orders">
-      {isLoggedIn ? (
-        <div>
-          <h1>Order Details</h1>
-          <div>
-            {orders.length > 0 ? (
-              <div className="orders-made">
-                {orders.map((order, index) => {
-                  const burger = burgerList.burgers.find(b => b.name === order.name);
-                  return (
-                    <div className="individual-order" key={index}>
-                      <div className="description">
-                        <h3>{order.name}</h3>
-                        <p>₹ {burger.price}</p>
-                      </div>
-                      <div className="image">
-                        <img src={burger.image} alt={order.name} />
-                      </div>
-                      <button className="cancel-button" onClick={() => handleCancel(index)}>
-                      Cancel Order
-                      </button>
-                    </div>
-                  );
-                })}
-                
-              </div>
-            ) : (
-              <p>No orders found</p>
-            )}
-          </div>
-        </div>
-      ) : (
-        <div>
-          <h1 className="myorders-title">My Orders</h1>
-          <div className="orders-listed">
-            <div className="orders-made">
-              <h3>No orders made yet<br />Login to view your orders!</h3>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
 }
 
-export default Orders;
+export default function Orders() 
+{
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [orders, setOrders] = useState([])
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"))
+        if (user && user.userData) 
+        {
+            setIsLoggedIn(true)
+            const userOrders = user.userData.orders
+            setOrders(userOrders)
+        }
+      }, []
+    );
+
+    const handleCancel = async (index) => 
+    {
+        try 
+        {
+            const email = JSON.parse(localStorage.getItem("user")).userData.email
+            const response = await axios.delete(`/delete-order/${email}/${index}`)
+            setOrders(response.data.user.orders)
+            console.log("Order canceled")
+        } 
+        catch (error) 
+        {
+            console.error("Error canceling order:", error)
+        }
+    };
+
+    useEffect(() => 
+        {
+            const user = JSON.parse(localStorage.getItem("user"))
+            if (user && user.userData) 
+            {
+                setIsLoggedIn(true)
+                const userOrders = user.userData.orders
+                setOrders(userOrders)
+            }
+        }, []
+    );
+
+    return (
+      <div className="orders">
+      {
+            isLoggedIn && orders.length > 0 ? (
+                <div>
+                    <h1>Order Details</h1>
+                    <div>
+                        {
+                            orders.length > 0 ? (
+                                <div className="orders-made">
+                                    {
+                                        orders.map((order, index) => 
+                                        {
+                                            const burger = burgerList.burgers.find(b => b.name === order.name);
+                                            return (
+                                                <div 
+                                                    className="individual-order" 
+                                                    key={index}
+                                                >
+                                                        <div className="description">
+                                                            <h3>{order.name}</h3>
+
+                                                            <p>₹ {burger.price}</p>
+                                                        </div>
+
+                                                        <div className="image">
+                                                            <img 
+                                                                src={burger.image} 
+                                                                alt={order.name} 
+                                                            />
+                                                        </div>
+                                                        
+                                                        <button 
+                                                            className="cancel-button" 
+                                                            onClick={() => handleCancel(index)}
+                                                        >
+                                                            Cancel Order
+                                                        </button>
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </div>
+                        ) : (
+                            <p>No orders found</p>
+                        )}
+                    </div>
+                </div>
+      ) : isLoggedIn && orders.length === 0 ? (
+                <div>
+                    <h1 className="myorders-title">My Orders</h1>
+                    
+                    <div className="orders-listed">
+                        <div className="orders-made">
+                        <h3>
+                            No orders made yet 
+                            <br />
+                            Login to view your orders!
+                        </h3>
+                  </div>
+              </div>
+          </div>
+      ) : (
+          <div>
+              <h1 className="myorders-title">My Orders</h1>
+              
+              <div className="orders-listed">
+                  <div className="orders-made">
+                      <h3>Please log in to view your orders.</h3>
+                  </div>
+              </div>
+          </div>
+      )}
+  </div>
+  
+  )
+}
