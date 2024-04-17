@@ -31,11 +31,13 @@ export default function Customize()
 
     function handleSubmit (e) 
     {
+        const email = JSON.parse(localStorage.getItem("user")).userData.email;
         e.preventDefault()
         axios.post(URL ,
           {
               burgerName, 
-              ingredients
+              ingredients,
+              email
           })
         .then(response => 
           {
