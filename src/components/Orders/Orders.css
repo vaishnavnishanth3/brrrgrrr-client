@@ -10,10 +10,13 @@
     min-height: 100vh;
 }
 
-.orders h1 {
+.orders h1, .orders1 h1 {
     font-family: 'Comic Sans MS', sans-serif;
     color: orange;
     margin-bottom: 20px;
+    background-color: black;
+    border-radius: 20px;
+    padding: 20px;
 }
 
 .orders-listed {
@@ -22,6 +25,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    color: orange;
 }
 
 .orders-made {
@@ -73,4 +77,8 @@
 
 .cancel-button:hover {
     background-color: darkorange;
+}
+
+.individual-order ul{
+    list-style-type:none;
 }
