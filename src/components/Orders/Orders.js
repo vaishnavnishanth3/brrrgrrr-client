@@ -3,7 +3,6 @@ import axios from "axios"
 
 import "./Orders.css"
 
-
   const burgerList = {
     "burgers": [
         {
@@ -174,23 +173,12 @@ export default function Orders()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [orders, setOrders] = useState([])
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"))
-        if (user && user.userData) 
-        {
-            setIsLoggedIn(true)
-            const userOrders = user.userData.orders
-            setOrders(userOrders)
-        }
-      }, []
-    );
-
     const handleCancel = async (index) => 
     {
         try 
         {
             const email = JSON.parse(localStorage.getItem("user")).userData.email
-            const response = await axios.delete(`/delete-order/${email}/${index}`)
+            const response = await axios.post(`orders/delete-order/${email}/${index}`)
             setOrders(response.data.user.orders)
             console.log("Order canceled")
         } 
@@ -201,13 +189,13 @@ export default function Orders()
     };
 
     useEffect(() => 
-        {
-            const user = JSON.parse(localStorage.getItem("user"))
+        {   
+            const user = JSON.parse(localStorage.getItem("user"));
             if (user && user.userData) 
             {
-                setIsLoggedIn(true)
-                const userOrders = user.userData.orders
-                setOrders(userOrders)
+                setIsLoggedIn(true);
+                const userOrders = user.userData.orders;
+                setOrders(userOrders);
             }
         }, []
     );
@@ -226,6 +214,8 @@ export default function Orders()
                                         orders.map((order, index) => 
                                         {
                                             const burger = burgerList.burgers.find(b => b.name === order.name);
+                                            console.log("Order name:", order.name)
+                                            console.log("Burger found:", burger);
                                             return (
                                                 <div 
                                                     className="individual-order" 
