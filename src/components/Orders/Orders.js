@@ -214,8 +214,6 @@ export default function Orders()
                                         orders.map((order, index) => 
                                         {
                                             const burger = burgerList.burgers.find(b => b.name === order.name);
-                                            console.log("Order name:", order.name)
-                                            console.log("Burger found:", burger);
                                             return (
                                                 <div 
                                                     className="individual-order" 
