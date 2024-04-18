@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-import "./Orders.css"
+import "./Orders.css";
 
   const burgerList = {
     "burgers": [
@@ -168,15 +168,17 @@ import "./Orders.css"
     ]
 }
 
-export default function Orders() {
+function Orders() {
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
 
-    const handleCancel = async (index) => {
+    async function handleCancel (_id) {
         try {
-            const email = JSON.parse(localStorage.getItem("user")).userData.email;
-            const response = await axios.post(`orders/delete-order/${email}/${index}`);
+            const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
+            
+            const response = await axios.post(`orders/cancel/${userID}}`);
             setOrders(response.data.user.orders);
             console.log("Order canceled");
         } catch (error) {
@@ -193,7 +195,6 @@ export default function Orders() {
             const userCustomizedBurgers = user.userData.customizedBurgers;
             setOrders(userOrders);
             setCustomizedBurgers(userCustomizedBurgers);
-            // console.log("user-orders: "+userOrders+"\n Customized-burgers: "+customizedBurgers);
         }
     }, []);
 
@@ -216,7 +217,7 @@ export default function Orders() {
                                         <div className="image">
                                             <img src={burger.image} alt={order.name} />
                                         </div>
-                                        <button className="cancel-button" onClick={() => handleCancel(index)}>
+                                        <button className="cancel-button" onClick={(_id) => handleCancel()}>
                                             Cancel Order
                                         </button>
                                     </div>
@@ -261,7 +262,7 @@ export default function Orders() {
                                         <li key={i}>{ingredient}</li>
                                     ))}
                                 </ul>
-                                <button className="cancel-button" onClick={() => handleCancel(index)}> Cancel Order </button>
+                                <button className="cancel-button" onClick={() => handleCancel()}> Cancel Order </button>
                             </div>
                         ))}
                     </div>
@@ -270,3 +271,5 @@ export default function Orders() {
         </div>
     );
 }
+
+export default Orders;
