@@ -6,6 +6,7 @@ import "./Card.css"
 export default function Card(props) 
 {
     const title = props.title;
+    const price = props.price
     
     function handleClick (e) {
         console.log("Clicked")
@@ -14,7 +15,8 @@ export default function Card(props)
         e.preventDefault();
         axios.post(URL ,{
             id: userID,
-            title
+            title,
+            price 
         })
         .then(()=> console.log("Order Submitted"))
         .catch(error => console.log(error))

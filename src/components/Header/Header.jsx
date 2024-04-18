@@ -20,6 +20,8 @@ export default function Header()
             <div className="logo">
                 <Link 
                     to="/"
+                    className={activeTab === 'Home' ? 'tab active' : 'tab'}
+                    onClick={() => handleClick('Home')}
                 >
                     <img 
                         src={burgerImage} 

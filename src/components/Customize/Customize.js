@@ -1,51 +1,36 @@
 import React, { useState } from 'react'
-import { useNavigate} from "react-router-dom"
 import axios from "axios"
 
 import "./Customize.css"
 
-export default function Customize() 
-{
+export default function Customize() {
     const [burgerName, setBurgerName] = useState('')
     const [ingredients, setIngredients] = useState([])
-    const navigate = useNavigate()
-    const URL = 'http://localhost:3001/customize'
-
-    function handleBurgerNameChange (event) 
-    {
+    
+    function handleBurgerNameChange (event) {
         setBurgerName(event.target.value)
     }
 
-    function handleIngredientChange (event, ingredient) 
-    {
+    function handleIngredientChange (event, ingredient) {
         const isChecked = event.target.checked
-        if (isChecked) 
-        {
+        if (isChecked) {
             setIngredients([...ingredients, ingredient])
-        } 
-        else 
-        {
+        } else {
             setIngredients(ingredients.filter(item => item !== ingredient))
         }
     }
 
-    function handleSubmit (e) 
-    {
-        const email = JSON.parse(localStorage.getItem("user")).userData.email;
+    function handleSubmit (e) {
+        const userID = JSON.parse(localStorage.getItem('user')).userData.userId
+        const URL = `http://localhost:3001/customize/${userID}`
         e.preventDefault()
-        axios.post(URL ,
-          {
-              burgerName, 
-              ingredients,
-              email
+        axios.post(URL ,{ 
+            id: userID, 
+            burgerName, 
+            ingredients
           })
-        .then(response => 
-          {
-              navigate('/orders')
-          })
-        .catch(error => {
-              console.log(error)
-          });
+        .then(()=> {console.log("Order Submitted") })
+        .catch(error => { console.log(error) });
     }
 
     return (
@@ -112,7 +97,7 @@ export default function Customize()
                         Ingredients: {ingredients.join(', ')}
                     </p>
                     
-                    <button>
+                    <button onClick={handleSubmit}>
                         Let's Brrrgrrr!
                     </button>
                 </form>
