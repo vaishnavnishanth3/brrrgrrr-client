@@ -1,34 +1,25 @@
-import { useState } from "react"
-import { useNavigate, Link} from "react-router-dom"
-import axios from "axios"
+import { useState } from "react";
+import { useNavigate, Link} from "react-router-dom";
+import axios from "axios";
 
-import "./Signup.css"
+import "./Signup.css";
 
-export default function Signup() 
-{
+function Signup() {
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState('');
+
     const navigate = useNavigate();
-    const URL = 'http://localhost:3001/account/signup'
+    
+    const URL = 'http://localhost:3001/account/signup';
 
     function handleSignup (e) {
-        e.preventDefault()
-        axios.post(URL ,{
-            name, 
-            email, 
-            password}
-          )
-          .then(response => 
-          {
-              navigate('/account/login')
-          })
-          .catch(error => 
-          {
-              console.log(error)
-          }
-        )
-    }
+        e.preventDefault();
+        axios.post(URL , { name, email, password})
+          .then(() => { navigate('/account/login')})
+          .catch(error => { console.log(error) });
+    };
 
   return (
       <div className="account">
@@ -37,11 +28,7 @@ export default function Signup()
           
           <div className="column2">
               <div className="signup-component">
-                  <h2>
-                      Sign Up
-                      <br/>
-                      to keep track of your diet history?!!
-                  </h2>
+                  <h2> Sign Up <br/> to keep track of your diet history?!! </h2>
                   
                   <form>
                       <input
@@ -62,25 +49,18 @@ export default function Signup()
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                       />
-                      <button 
-                          onClick={handleSignup}
-                      >
-                          Submit
-                      </button>
+                      <button onClick={handleSignup}> Submit </button>
                   </form>
 
-                  <h4>
-                      Already have an account? 
-                      <Link 
-                          to="/account/login"
-                      >
-                      <h2>
-                          Log In
-                      </h2>
+                  <h4> Already have an account? 
+                      <Link to="/account/login">
+                      <h2> Log In </h2>
                       </Link>
                   </h4>
                 </div>
             </div>
         </div>
-)
-}
+    );
+};
+
+export default Signup;

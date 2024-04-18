@@ -211,6 +211,7 @@ export default function Orders() {
                                         <div className="description">
                                             <h3>{order.name}</h3>
                                             <p>₹ {burger.price}</p>
+                                            <p>({order.quantity})</p>
                                         </div>
                                         <div className="image">
                                             <img src={burger.image} alt={order.name} />
@@ -253,15 +254,14 @@ export default function Orders() {
                                 <div className="description">
                                 <h3>{burger.name}</h3>
                                 <p>₹ {burger.price}</p>
+                                <p>({burger.quantity})</p>
                                 </div>
                                 <ul>
                                     {burger.ingredients.map((ingredient, i) => (
                                         <li key={i}>{ingredient}</li>
                                     ))}
                                 </ul>
-                                <button className="cancel-button" onClick={() => handleCancel(index)}>
-                                            Cancel Order
-                                </button>
+                                <button className="cancel-button" onClick={() => handleCancel(index)}> Cancel Order </button>
                             </div>
                         ))}
                     </div>

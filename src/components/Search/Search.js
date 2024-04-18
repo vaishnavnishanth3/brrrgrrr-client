@@ -1,9 +1,9 @@
-import React from "react"
-import Card from "../Card/Card"
+import React from "react";
+import Card from "../Card/Card";
 
-import "./Search.css"
+import "./Search.css";
 
-export default function Search() 
+function Search() 
 {
 
     const burgerList = {
@@ -182,18 +182,10 @@ export default function Search()
                     placeholder="Search..."
                 />
                 
-                <button>
-                    Brrrgrrr
-                </button> 
+                <button> Brrrgrrr </button> 
             </div>
             
-            <div className="hot-ready">
-                <h2>
-                    <span className="hot">
-                        Hot 
-                    </span> and Ready!
-                </h2>
-            </div>
+            <div className="hot-ready"> <h2> <span className="hot"> Hot </span> and Ready </h2> </div>
             
             <div className="burger-list">
                 {burgerList.burgers.map (burger => 
@@ -206,8 +198,10 @@ export default function Search()
                         />
                     </div>
                     )
-                }
+                };
             </div>
         </div>
     )
 }
+
+export default Search;

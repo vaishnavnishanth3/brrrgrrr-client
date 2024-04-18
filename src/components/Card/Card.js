@@ -1,26 +1,23 @@
-import React from "react"
-import axios from "axios"
+import React from "react";
+import axios from "axios";
 
-import "./Card.css"
+import "./Card.css";
 
-export default function Card(props) 
+function Card(props) 
 {
     const title = props.title;
-    const price = props.price
+    const price = props.price;
     
     function handleClick (e) {
-        console.log("Clicked")
-        const userID = JSON.parse(localStorage.getItem('user')).userData.userId
-        const URL = `http://localhost:3001/orders/${userID}`
+        const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
+        const URL = `http://localhost:3001/orders/${userID}`;
+      
         e.preventDefault();
-        axios.post(URL ,{
-            id: userID,
-            title,
-            price 
-        })
+
+        axios.post(URL , { id: userID, title, price })
         .then(()=> console.log("Order Submitted"))
         .catch(error => console.log(error))
-    }
+    };
 
     return (
         <div className="Card">
@@ -34,5 +31,7 @@ export default function Card(props)
                 <button className="order-button" onClick={handleClick}>Order</button>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default Card;

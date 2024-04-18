@@ -1,19 +1,17 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
 
-import searchImage from "./assets/searchImage.png"
-import burgerImage from "./assets/burger.jpeg"
+import searchImage from "./assets/searchImage.png";
+import burgerImage from "./assets/burger.jpeg";
 
-export default function Header() 
-{
-    const [activeTab, setActiveTab] = useState('Home')
+function Header() {
+    const [activeTab, setActiveTab] = useState('Home');
       
-    function handleClick(tab) 
-    {
-        setActiveTab(tab)
-    }
+    function handleClick(tab) {
+        setActiveTab(tab);
+    };
 
     return (
         <div id="header">
@@ -23,11 +21,9 @@ export default function Header()
                     className={activeTab === 'Home' ? 'tab active' : 'tab'}
                     onClick={() => handleClick('Home')}
                 >
-                    <img 
-                        src={burgerImage} 
-                        alt="Logo" 
-                    />
+                    <img src={burgerImage} alt="Logo" />
                 </Link>
+                
                 <h1>
                     <Link 
                         to="/about" 
@@ -41,9 +37,7 @@ export default function Header()
 
             <div className="nav">
                 <ul>
-                    <Link 
-                        to= "/search"
-                    >
+                    <Link to= "/search">
                         <li 
                             className={activeTab === 'Search' ? 'tab active search' : 'tab search'} 
                             onClick={() => handleClick('Search')}
@@ -52,33 +46,29 @@ export default function Header()
                                 className="search-icon" 
                                 src={searchImage} 
                                 alt="search"
-                            />
-                                Search
+                            /> Search
                         </li>
                     </Link>
 
-                    <Link 
-                        to="/orders"
-                    >
+                    <Link to="/orders">
                         <li 
                             className={activeTab === 'Orders' ? 'tab active' : 'tab'} 
                             onClick={() => handleClick('Orders')}
-                        >
-                            My Orders
+                        > My Orders
                         </li>
                     </Link>
                     
-                    <Link 
-                        to="/account">
+                    <Link to="/account">
                         <li 
                             className={activeTab === 'Account' ? 'tab active' : 'tab'} 
                             onClick={() => handleClick('Account')}
-                        >
-                            My Account
+                        > My Account
                         </li>
                     </Link>
                 </ul>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default Header;

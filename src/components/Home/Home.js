@@ -1,13 +1,25 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import axios from "axios";
+import React from "react";
+import { Link } from "react-router-dom";
 
-import "./Home.css"
+import "./Home.css";
 
-import burgerImage from "../About/assets/burger-image.jpeg"
-import bookMyShow from "./assets/bookmyshow-logo.png"
+import burgerImage from "../About/assets/burger-image.jpeg";
+import bookMyShow from "./assets/bookmyshow-logo.png";
 
-export default function Home() 
-{
+function Home() {
+
+    function handleClick(e) {
+        const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
+        const URL = `http://localhost:3001/orders/${userID}`;
+      
+        e.preventDefault();
+
+        axios.post(URL , { id: userID, title: "Classic Burger", price: 499, quantity: 3 })
+        .then(()=> console.log("Order Submitted"))
+        .catch(error => console.log(error))
+    }
+
     return (
         <div>
             <div id="main">
@@ -31,21 +43,11 @@ export default function Home()
                         
                         <div className="price-details">
                             <div>
-                                <p>Buy 3 for 
-                                    <span className="price-number">
-                                        ₹499/-
-                                    </span>
-                                </p>
+                                <p>Buy 3 for <span className="price-number"> ₹499/- </span> </p>
                                 
-                                <p> Now only at 
-                                    <span className="name">Brrrgrrr</span>
-                                </p>
-
-                                <Link to="/product">
-                                    <button className="buy-special">
-                                        Buy Now!
-                                    </button>
-                                </Link>
+                                <p> Now only at <span className="name">Brrrgrrr</span> </p>
+                                
+                                <button className="buy-special" onClick={handleClick}> Buy Now! </button>
                             </div>
                         </div>
                     </div> 
@@ -56,9 +58,7 @@ export default function Home()
                         <h3>Now available with 
                             <img className="bookmyshowlogo" src={bookMyShow} alt='bookmyshow'/>
                     
-                            <a className="bookmyshowlink" href="https://in.bookmyshow.com" target="_blank" rel="noreferrer">
-                                Bookmyshow!
-                            </a>
+                            <a className="bookmyshowlink" href="https://in.bookmyshow.com" target="_blank" rel="noreferrer"> Bookmyshow! </a>
                         </h3>
                     </div>
                 
@@ -68,13 +68,13 @@ export default function Home()
                         <h2>Create your own Happy snack!</h2>
                         
                         <Link to="/customize">
-                            <button>
-                                Customize
-                            </button>
+                            <button> Customize </button>
                         </Link>
                     </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
+
+export default Home;
