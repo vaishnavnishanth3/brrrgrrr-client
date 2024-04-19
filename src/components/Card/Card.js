@@ -9,9 +9,10 @@ function Card(props) {
     
     const [count, setCount] = useState(0);
     const {
+        // eslint-disable-next-line no-unused-vars
         userData,
         setUserData
-    }=useContext(Context)
+    } = useContext(Context)
 
     function handleClick(e) {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -23,8 +24,6 @@ function Card(props) {
     
             axios.post(URL, { id: userID, title, price, image })
                 .then((res) => {
-                    console.log(res);
-                    console.log(userData)
                     setUserData(prev=>{
                         return {userData:{...prev.userData,orders:res.data.orders}}
                     })

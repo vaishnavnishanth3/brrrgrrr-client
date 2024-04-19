@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import "./Header.css";
 
-import searchImage from "./assets/searchImage.png";
 import burgerImage from "./assets/burger.jpeg";
 
 function Header() {
@@ -44,7 +43,7 @@ function Header() {
                         >
                             <img 
                                 className="search-icon" 
-                                src={searchImage} 
+                                src="https://th.bing.com/th/id/OIP.jQ-PD_9FUPdKWYACFovp7QHaHa?w=154&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" 
                                 alt="search"
                             /> Search
                         </li>

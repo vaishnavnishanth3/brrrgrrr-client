@@ -7,11 +7,8 @@ import Context from "../../contextStore/context";
 function Orders() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [orders, setOrders] = useState([]);
-    const [customizedBurgers, setCustomizedBurgers] = useState([]);
     
     const {userData}=useContext(Context);
-    console.log(userData);
 
     function handleCancel(id) {
         try {
@@ -19,20 +16,7 @@ function Orders() {
             const orderID = id;
     
             const URL = `http://localhost:3001/orders/cancel/${userID}/${orderID}`;
-            console.log(orderID);
             axios.delete(URL)
-                .then(() => {
-                    console.log("Order Canceled!");
-                    
-                    axios.get(`http://localhost:3001/order/${userID}`)
-                        .then(response => {
-                            console.log(response.data.order);
-                            setOrders(response.data.order);
-                        })
-                        .catch(error => {
-                            console.log("Error fetching orders after cancellation:", error);
-                        });
-                })
                 .then(() => {
                     const target = document.getElementById(`order-${orderID}`);
                     target.innerHTML = "Order Canceled!"
@@ -54,20 +38,7 @@ function Orders() {
     
             const URL = `http://localhost:3001/customize/cancel/${userID}/${orderID}`;
             
-            console.log(orderID);
-            
             axios.delete(URL)
-                .then(() => {
-                    console.log("Order Canceled!");
-                    axios.get(`http://localhost:3001/orders/${userID}`)
-                        .then(response => {
-                            console.log(response.data.order);
-                            setCustomizedBurgers(response.data.order);
-                        })
-                        .catch(error => {
-                            console.log("Error fetching orders after cancellation:", error);
-                        });
-                })
                 .then(() => {
                     const target = document.getElementById(`order-${orderID}`);
                     target.innerHTML = "Order Canceled!"
@@ -86,14 +57,6 @@ function Orders() {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.userData) {
             setIsLoggedIn(true);
-            const userOrders = user.userData.orders;
-            const userCustomizedBurgers = user.userData.customizedBurgers;
-            setOrders(userOrders);
-            setCustomizedBurgers(userCustomizedBurgers);
-            console.log("userOrders: ")
-            console.log(userOrders);
-            console.log("customizedOrders: ")
-            console.log(customizedBurgers)
         // eslint-disable-next-line react-hooks/exhaustive-deps
         }},[])
 
