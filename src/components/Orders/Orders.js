@@ -8,7 +8,6 @@ function Orders() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
-    
 
     function handleCancel(id) {
         try {
