@@ -25,7 +25,7 @@ function Home() {
             <div id="main">
                 <div className="greet">
                     <h1>Try our new reciepe on 
-                        <span className="newandhot">Search!</span>
+                        <span className="newandhot"> Search! </span>
                     </h1>
                 </div>
 

@@ -17,7 +17,7 @@ function Account() {
             <div className="account">
                 <div className="action-area">
                     <div className="column1">
-                        <h2>Welcome {user.userData.name}!</h2>
+                        <h2> Welcome {user.userData.name}!</h2>
                         <button onClick={handleLogout}> Logout </button>
                     </div>
                     

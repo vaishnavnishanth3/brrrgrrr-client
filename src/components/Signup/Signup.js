@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 
 import "./Signup.css";
@@ -9,15 +9,13 @@ function Signup() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const navigate = useNavigate();
     
     const URL = 'http://localhost:3001/account/signup';
 
     function handleSignup (e) {
         e.preventDefault();
         axios.post(URL , { name, email, password})
-          .then(() => { navigate('/account/login')})
+          .then(() => { document.querySelectorAll('h2')[0].innerHTML="Account Created! Login to Proceed!!"})
           .catch(error => { console.log(error) });
     };
 

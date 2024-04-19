@@ -35,9 +35,9 @@ function Search() {
             
             <div className="burger-list">
                 {burgers.map (burger => 
-                    <div className="cards">
+                    <div key={burger.id} className="cards">
                         <Card 
-                            key={burger.id} 
+                            key={burger.id}
                             title={burger.name} 
                             image={burger.image} 
                             price={burger.price} 

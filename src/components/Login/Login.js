@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,16 +8,7 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-          const user = JSON.parse(localStorage.getItem('user'));
-          if (user) {
-              setLoggedIn(true)
-          };
-        }, []
-    );
 
   async function handleLogin (e) {
       e.preventDefault();
@@ -25,16 +16,14 @@ function Login() {
           const response = await axios.post('http://localhost:3001/account/login', { email, password} );
           const userData = response.data;
           localStorage.setItem('user', JSON.stringify({ userData }));
-          setLoggedIn(true);
+          document.querySelectorAll('h2')[0].innerHTML="Logged In Successfully!!"
+          setTimeout(() => {
+            navigate('/account');
+        }, 1500);
       } catch (error) {
           console.error('Login error: ', error.response.data.message);
           setMessage(error.response.data.message);
       };
-  };
-
-  if (loggedIn) {
-    navigate('/account');
-    return null;
   };
 
   return (

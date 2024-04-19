@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./Orders.css";
+import burgersData from "../burgers.json";
 
 function Orders() {
 
@@ -9,8 +10,6 @@ function Orders() {
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
     const [burgers, setBurgers] = useState([]);
-
-    const URL = "http://localhost:3001/burgers";
 
     async function handleCancel (_id) {
         try {
@@ -35,10 +34,7 @@ function Orders() {
         }},[])
         
     useEffect(()=> {
-        fetch(URL)
-        .then(response => response.json())
-        .then(data => setBurgers(data))
-        .catch(error=> { console.log("Error Fetching burgers: "+error);})
+        setBurgers(burgersData);
     }, [])
         
     useEffect(() => {

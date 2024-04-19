@@ -3,8 +3,7 @@ import axios from "axios";
 
 import "./Card.css";
 
-function Card(props) 
-{
+function Card(props) {
     const title = props.title;
     const price = props.price;
     
@@ -21,7 +20,7 @@ function Card(props)
 
     return (
         <div className="Card">
-            <div className="card-image">
+            <div className="card-image" key={props.id}>
                 <img src={props.image} alt={props.title}/>
             </div>
             
