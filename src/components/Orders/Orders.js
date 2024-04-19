@@ -20,7 +20,7 @@ function Orders() {
             console.error("Error canceling order:", error);
         }
     };
-    
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.userData) {
@@ -42,9 +42,8 @@ function Orders() {
                                 return (
                                     <div className="individual-order" key={index}>
                                         <div className="description">
-                                            <h3>{order.name}</h3>
+                                            <h3>{order.name} ({order.quantity}) </h3>
                                             <p>₹ {order.price}</p>
-                                            <p>({order.quantity})</p>
                                         </div>
                                         <div className="image">
                                             <img src={order.image} alt={order.name} />
@@ -85,9 +84,8 @@ function Orders() {
                             (
                             <div className="individual-order" key={index}>
                                 <div className="description">
-                                <h3>{burger.name}</h3>
+                                <h3>{burger.name} <p>({burger.quantity})</p></h3>
                                 <p>₹ {burger.price}</p>
-                                <p>({burger.quantity})</p>
                                 </div>
                                 <ul>
                                     {burger.ingredients.map((ingredient, i) => (

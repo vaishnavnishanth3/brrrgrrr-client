@@ -27,16 +27,38 @@ function Customize() {
         };
     };
 
+    function setDefault() {
+        setBurgerName('');
+        setIngredients([]);
+        setQuantity('');
+        document.querySelectorAll('.ingredients input[type="checkbox"]').forEach(input => {
+            input.checked = false;
+        });
+    }
+
     function handleSubmit (e) {
-        const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
-        const URL = `http://localhost:3001/customize/${userID}`;
+        const user = JSON.parse(localStorage.getItem('user'));
         
-        e.preventDefault();
+        if (user){
+            const userID = user.userData.userId;
+            const URL = `http://localhost:3001/customize/${userID}`;
         
-        axios.post(URL , { id: userID, burgerName, ingredients, quantity })
-        .then(()=> {console.log("Order Submitted") })
-        .catch(error => { console.log(error) });
-    };
+            e.preventDefault();
+        
+            axios.post(URL , { id: userID, burgerName, ingredients, quantity })
+            .then(()=> {
+                setDefault();
+                document.querySelectorAll('h2')[0].innerHTML = "Customized Burger(s) Added";
+            })
+            .catch(error => { console.log(error) });
+        } else {
+            e.preventDefault();
+            setDefault();
+            const target = document.querySelectorAll('h2')[0];
+            target.innerHTML="Please login to make orders!";
+            target.style.color = "red";
+        }
+    }
 
     return (
         <div className="customize1">

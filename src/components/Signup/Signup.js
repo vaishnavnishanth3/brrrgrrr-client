@@ -22,7 +22,7 @@ function Signup() {
             setPassword('');
             setName('');
             setTimeout(() => {
-                navigate('/account');
+                navigate('/account/login');
             }, 1500);
         })
           .catch(error => { console.log(error) });

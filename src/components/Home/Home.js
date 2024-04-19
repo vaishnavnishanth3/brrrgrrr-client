@@ -1,23 +1,39 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
 
-import burgerImage from "../About/assets/burger-image.jpeg";
 import bookMyShow from "./assets/bookmyshow-logo.png";
 
 function Home() {
 
-    function handleClick(e) {
-        const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
-        const URL = `http://localhost:3001/orders/${userID}`;
-      
-        e.preventDefault();
+    const [count, setCount] = useState(0);
 
-        axios.post(URL , { id: userID, title: "Classic Burger", price: 499, quantity: 3 })
-        .then(()=> console.log("Order Submitted"))
-        .catch(error => console.log(error))
+    function handleClick(e) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const userID = user.userData.userId;
+            const URL = `http://localhost:3001/orders/${userID}`;
+            
+            setCount(prevCount => prevCount + 3);
+            
+            e.preventDefault();
+
+            axios.post(URL , { id: userID, title: "Classic Burger", price: 499, quantity: 3, image: "https://www.unileverfoodsolutions.com.sg/dam/global-ufs/mcos/SEA/calcmenu/recipes/SG-recipes/vegetables-&-vegetable-dishes/%E7%BB%8F%E5%85%B8%E8%8A%9D%E5%A3%AB%E6%B1%89%E5%A0%A1/main-header.jpg" })
+                .then(()=> {
+                    e.target.textContent = `Ordered (${count + 3})`;
+                    e.target.style.backgroundColor = "green";
+                    e.target.style.color = "white";
+                })
+                .catch(error => console.log(error))
+        } else {
+            e.preventDefault();
+            const target = document.querySelectorAll('.buy-special')[0];
+            target.innerText = "Please login to make orders!";
+            target.style.backgroundColor = "black";
+            target.style.color = "red";
+        }
     }
 
     return (
@@ -38,7 +54,7 @@ function Home() {
                         </div>
 
                         <div className="item-image">
-                            <img src={burgerImage} alt="burger"/>
+                            <img src="https://th.bing.com/th/id/OIP.foUc1lQc_Z5OvIfsyd8UFgHaGo?w=209&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="burger"/>
                         </div>
                         
                         <div className="price-details">

@@ -7,6 +7,10 @@
     border-radius: 20px;
 }
 
+.Card h2{
+    color: Orange;
+}
+
 .card-body{
     color: white;
 }

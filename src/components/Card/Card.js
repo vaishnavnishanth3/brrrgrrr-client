@@ -4,40 +4,44 @@ import axios from "axios";
 import "./Card.css";
 
 function Card(props) {
-    const title = props.title;
-    const price = props.price;
-    const image = props.image;
+    const { title, price, image } = props;
     
     const [count, setCount] = useState(0);
 
-    function handleClick (e) {
-        const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
-        const URL = `http://localhost:3001/orders/${userID}`;
-        e.preventDefault();
-        setCount(count+1);
-        const target = document.querySelector(".order-button");
-        target.style.backgroundColor = "green";
-        target.style.color = "white";
-        target.innerHTML = `Ordered (${count+1})`
-
-        axios.post(URL , { id: userID, title, price, image })
-        .then(()=> console.log("Order Submitted"))
-        .catch(error => console.log(error))
-    };
+    function handleClick(e) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const userID = user.userData.userId;
+            const URL = `http://localhost:3001/orders/${userID}`;
+            
+            setCount(prevCount => prevCount + 1);
+    
+            axios.post(URL, { id: userID, title, price, image })
+                .then(() => {
+                    e.target.textContent = `Ordered (${count + 1})`;
+                    e.target.style.backgroundColor = "green";
+                    e.target.style.color = "white";
+                })
+                .catch(error => console.log(error));
+        } else {
+            e.target.innerText = "Please login to make orders!";
+            e.target.style.backgroundColor = "black";
+            e.target.style.color = "red";
+        }
+    }
 
     return (
         <div className="Card">
             <div className="card-image">
-                <img src={props.image} alt={props.title}/>
+                <img src={image} alt={title} />
             </div>
-            
             <div className="card-body">
-                <h5>{props.title}</h5>
-                <p> <span className="card-price">₹{props.price}</span> </p>
+                <h5>{title}</h5>
+                <p><span className="card-price">₹{price}</span></p>
                 <button className="order-button" onClick={handleClick}>Order</button>
             </div>
         </div>
     );
-};
+}
 
 export default Card;
