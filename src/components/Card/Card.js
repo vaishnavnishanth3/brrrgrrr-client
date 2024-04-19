@@ -6,6 +6,7 @@ import "./Card.css";
 function Card(props) {
     const title = props.title;
     const price = props.price;
+    const image = props.image;
     
     function handleClick (e) {
         const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
@@ -13,7 +14,7 @@ function Card(props) {
       
         e.preventDefault();
 
-        axios.post(URL , { id: userID, title, price })
+        axios.post(URL , { id: userID, title, price, image })
         .then(()=> console.log("Order Submitted"))
         .catch(error => console.log(error))
     };

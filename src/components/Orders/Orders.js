@@ -8,9 +8,7 @@ function Orders() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
-    const [burgers, setBurgers] = useState([]);
-
-    const URL = "http://localhost:3001/burgers"
+    
     async function handleCancel (_id) {
         try {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
@@ -22,7 +20,7 @@ function Orders() {
             console.error("Error canceling order:", error);
         }
     };
-
+    
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.userData) {
@@ -33,20 +31,6 @@ function Orders() {
             setCustomizedBurgers(userCustomizedBurgers);
         }},[])
 
-    useEffect(()=>{
-        fetch(URL)
-        .then(response => response.json())
-        .then(data => console.log("Data Fetched! "+ data))
-        .then(data => setBurgers(data))
-        .catch(err => {
-            console.log("Error: "+err)
-        })
-    },[])
-        
-    useEffect(() => {
-        console.log("Burgers" + burgers);
-    },[burgers]);
-
     return (
         <div className="orders">
             {isLoggedIn && orders.length > 0 ? (
@@ -55,17 +39,15 @@ function Orders() {
                     <div>
                         <div className="orders-made">
                             {orders.map((order, index) => {
-                                const burger = burgers.find(burger => burger.name === order.name);
-                                console.log(burgers);
                                 return (
                                     <div className="individual-order" key={index}>
                                         <div className="description">
                                             <h3>{order.name}</h3>
-                                            <p>₹ {burger.price}</p>
+                                            <p>₹ {order.price}</p>
                                             <p>({order.quantity})</p>
                                         </div>
                                         <div className="image">
-                                            <img src={burger.image} alt={order.name} />
+                                            <img src={order.image} alt={order.name} />
                                         </div>
                                         <button className="cancel-button" onClick={(_id) => handleCancel()}>
                                             Cancel Order
