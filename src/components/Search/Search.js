@@ -1,49 +1,62 @@
 import React, { useState, useEffect } from "react";
-
 import Card from "../Card/Card";
-
 import "./Search.css";
 
 function Search() {
-    
     const [burgers, setBurgers] = useState([]);
-    
-    const URL = "http://localhost:3001/burgers"
+    const [filteredBurgers, setFilteredBurgers] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const URL = "http://localhost:3001/burgers";
 
     useEffect(() => {
         fetch(URL)
-        .then(response => response.json())
-        .then(data => {setBurgers(data)})
-        .catch(error=> { console.log("Error Fetching burgers: "+error);})
-    },[]);
+            .then(response => response.json())
+            .then(data => {
+                setBurgers(data);
+                setFilteredBurgers(data); // Initialize filteredBurgers with all burgers
+            })
+            .catch(error => {
+                console.log("Error Fetching burgers: " + error);
+            });
+    }, []);
+
+    function handleSearch (query) {
+        setSearchQuery(query);
+        const filtered = burgers.filter(burger => burger.name.toLowerCase().includes(query.toLowerCase()));
+        setFilteredBurgers(filtered);
+    };
 
     return (
         <div className="search1">
             <h1>Brrrgrrr for your favourite Burger!</h1>
-            
+
             <div className="search-area">
-                <input 
-                    id="browseInput" 
-                    type="text" 
+                <input
+                    id="browseInput"
+                    type="text"
                     placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => handleSearch(e.target.value)}
                 />
-                
-                <button> Brrrgrrr </button> 
+
+                <button> Brrrgrrr </button>
             </div>
-            
-            <div className="hot-ready"> <h2> <span className="hot"> Hot </span> and Ready </h2> </div>
-            
-            <div className="burger-list" >
-                {burgers.map (burger => 
+
+            <div className="hot-ready">
+                <h2> <span className="hot"> Hot </span> and Ready </h2>
+            </div>
+
+            <div className="burger-list">
+                {filteredBurgers.map(burger =>
                     <div key={burger._id} className="cards">
                         <Card
-                            title={burger.name} 
-                            image={burger.image} 
-                            price={burger.price} 
+                            title={burger.name}
+                            image={burger.image}
+                            price={burger.price}
                         />
                     </div>
-                    )
-                };
+                )}
             </div>
         </div>
     )
