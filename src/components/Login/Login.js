@@ -12,12 +12,13 @@ function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
     const {setUserData}=useContext(Context)
+    
     async function handleLogin(e) {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3001/account/login', { email, password });
             const userData = response.data;
-            setUserData(userData)
+            setUserData({userData})
             localStorage.setItem('user', JSON.stringify({ userData }));
             setLoggedIn(true);
             setEmail('');

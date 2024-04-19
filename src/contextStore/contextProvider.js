@@ -10,6 +10,7 @@ const ContextProvider=(props)=>{
     }
 
     useEffect(()=>{
+        if(localStorage.getItem('user'))
             axios.get(`http://localhost:3001/orders/${JSON.parse(localStorage.getItem("user")).userData.userId}`)
             .then(res=>{
                 console.log(res)
