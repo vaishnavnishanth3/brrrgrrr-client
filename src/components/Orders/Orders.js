@@ -9,18 +9,41 @@ function Orders() {
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
     
-    async function handleCancel (_id) {
+
+    function handleCancel(id) {
         try {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
-            
-            const response = await axios.post(`orders/cancel/${userID}}`);
-            setOrders(response.data.user.orders);
-            console.log("Order canceled");
+            const orderID = id;
+    
+            const URL = `http://localhost:3001/orders/cancel/${userID}/${orderID}`;
+    
+            axios.delete(URL)
+                .then(() => {
+                    console.log("Order Canceled!");
+                    
+                    axios.get(`http://localhost:3001/orders/${userID}`)
+                        .then(response => {
+                            console.log(response.data.order);
+                            setOrders(response.data.order);
+                        })
+                        .catch(error => {
+                            console.log("Error fetching orders after cancellation:", error);
+                        });
+                })
+                .then(() => {
+                    const target = document.querySelectorAll('.cancel-button')[0];
+                    target.innerHTML = "Order Canceled!"
+                    target.style.backgroundColor = "red"
+                    target.style.color = "black";
+                })
+                .catch(error => {
+                    console.log("Error canceling order:", error);
+                });
         } catch (error) {
             console.error("Error canceling order:", error);
         }
-    };
-
+    }
+    
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.userData) {
@@ -29,6 +52,10 @@ function Orders() {
             const userCustomizedBurgers = user.userData.customizedBurgers;
             setOrders(userOrders);
             setCustomizedBurgers(userCustomizedBurgers);
+            console.log("userOrders: ")
+            console.log(userOrders);
+            console.log("customizedOrders: ")
+            console.log(customizedBurgers)
         }},[])
 
     return (
@@ -48,7 +75,9 @@ function Orders() {
                                         <div className="image">
                                             <img src={order.image} alt={order.name} />
                                         </div>
-                                        <button className="cancel-button" onClick={(_id) => handleCancel()}>
+                                        <button 
+                                            className="cancel-button" 
+                                            onClick={() => { handleCancel(order._id) }}>
                                             Cancel Order
                                         </button>
                                     </div>

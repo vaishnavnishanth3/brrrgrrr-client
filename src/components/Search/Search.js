@@ -14,7 +14,7 @@ function Search() {
             .then(response => response.json())
             .then(data => {
                 setBurgers(data);
-                setFilteredBurgers(data); // Initialize filteredBurgers with all burgers
+                setFilteredBurgers(data);
             })
             .catch(error => {
                 console.log("Error Fetching burgers: " + error);
