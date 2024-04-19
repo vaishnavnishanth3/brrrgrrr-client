@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 
 import "./Card.css";
+import Context from "../../contextStore/context";
 
 function Card(props) {
     const { title, price, image } = props;
     
     const [count, setCount] = useState(0);
+    const {
+        userData,
+        setUserData
+    }=useContext(Context)
 
     function handleClick(e) {
         const user = JSON.parse(localStorage.getItem('user'));
@@ -17,7 +22,12 @@ function Card(props) {
             setCount(prevCount => prevCount + 1);
     
             axios.post(URL, { id: userID, title, price, image })
-                .then(() => {
+                .then((res) => {
+                    console.log(res);
+                    console.log(userData)
+                    setUserData(prev=>{
+                        return {userData:{...prev.userData,orders:res.data.orders}}
+                    })
                     e.target.textContent = `Ordered (${count + 1})`;
                     e.target.style.backgroundColor = "green";
                     e.target.style.color = "white";

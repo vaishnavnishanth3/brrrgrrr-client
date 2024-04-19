@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from "axios";
 
 import "./Customize.css";
+import Context from '../../contextStore/context';
 
 function Customize() {
 
     const [burgerName, setBurgerName] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [quantity, setQuantity] = useState('');
-    
+    const {setUserData}=useContext(Context)
     function handleBurgerNameChange (event) {
         setBurgerName(event.target.value);
     };
@@ -46,7 +47,10 @@ function Customize() {
             e.preventDefault();
         
             axios.post(URL , { id: userID, burgerName, ingredients, quantity })
-            .then(()=> {
+            .then((res)=> {
+                setUserData(prev=>{
+                    return {userData:{...prev.userData,customizedBurgers:res.data.custom}}
+                })
                 setDefault();
                 document.querySelectorAll('h2')[0].innerHTML = "Customized Burger(s) Added";
             })
