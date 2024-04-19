@@ -55,7 +55,7 @@ function Orders() {
             console.log(userOrders);
             console.log("customizedOrders: ")
             console.log(customizedBurgers)
-        }},[])
+        }},[customizedBurgers])
 
     return (
         <div className="orders">
