@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./Orders.css";
-import burgersData from "../burgers.json";
 
 function Orders() {
 
@@ -11,6 +10,7 @@ function Orders() {
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
     const [burgers, setBurgers] = useState([]);
 
+    const URL = "http://localhost:3001/burgers"
     async function handleCancel (_id) {
         try {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
@@ -32,13 +32,19 @@ function Orders() {
             setOrders(userOrders);
             setCustomizedBurgers(userCustomizedBurgers);
         }},[])
-        
-    useEffect(()=> {
-        setBurgers(burgersData);
-    }, [])
+
+    useEffect(()=>{
+        fetch(URL)
+        .then(response => response.json())
+        .then(data => console.log("Data Fetched! "+ data))
+        .then(data => setBurgers(data))
+        .catch(err => {
+            console.log("Error: "+err)
+        })
+    },[])
         
     useEffect(() => {
-        console.log(burgers);
+        console.log("Burgers" + burgers);
     },[burgers]);
 
     return (

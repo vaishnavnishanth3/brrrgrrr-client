@@ -16,7 +16,9 @@ function Login() {
           const response = await axios.post('http://localhost:3001/account/login', { email, password} );
           const userData = response.data;
           localStorage.setItem('user', JSON.stringify({ userData }));
-          document.querySelectorAll('h2')[0].innerHTML="Logged In Successfully!!"
+          document.querySelectorAll('h2')[0].innerHTML="Logged In Successfully!!";
+          setEmail('');
+          setPassword('');
           setTimeout(() => {
             navigate('/account');
         }, 1500);

@@ -15,7 +15,12 @@ function Signup() {
     function handleSignup (e) {
         e.preventDefault();
         axios.post(URL , { name, email, password})
-          .then(() => { document.querySelectorAll('h2')[0].innerHTML="Account Created! Login to Proceed!!"})
+          .then(() => { 
+            document.querySelectorAll('h2')[0].innerHTML="Account Created! Login to Proceed!!";
+            setEmail('');
+            setPassword('');
+            setName('')
+        })
           .catch(error => { console.log(error) });
     };
 

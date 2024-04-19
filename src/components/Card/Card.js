@@ -20,7 +20,7 @@ function Card(props) {
 
     return (
         <div className="Card">
-            <div className="card-image" key={props.id}>
+            <div className="card-image">
                 <img src={props.image} alt={props.title}/>
             </div>
             

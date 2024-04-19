@@ -33,11 +33,10 @@ function Search() {
             
             <div className="hot-ready"> <h2> <span className="hot"> Hot </span> and Ready </h2> </div>
             
-            <div className="burger-list">
+            <div className="burger-list" >
                 {burgers.map (burger => 
-                    <div key={burger.id} className="cards">
-                        <Card 
-                            key={burger.id}
+                    <div key={burger._id} className="cards">
+                        <Card
                             title={burger.name} 
                             image={burger.image} 
                             price={burger.price} 
