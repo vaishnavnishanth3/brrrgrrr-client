@@ -41,11 +41,32 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 35px;
+    gap: 8px;
     background-color: rgba(0, 0, 0, 0.8);
     border: 2px white solid;
     border-radius: 30px;
     margin-bottom: 30px;
+    padding: 20px 0px;
+}
+
+.individual-order1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px white solid;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    
+}
+
+.ingredients{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
 .orders-made img {
@@ -80,5 +101,9 @@
 }
 
 .individual-order ul{
+    list-style-type:none;
+}
+
+.individual-order1 ul{
     list-style-type:none;
 }

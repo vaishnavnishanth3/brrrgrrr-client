@@ -114,16 +114,17 @@ function Orders() {
                     <div className="orders-listed">
                         {userData.userData.customizedBurgers.map((burger, index) =>             
                             (
-                            <div className="individual-order" key={index}>
+                            <div className="individual-order1" key={index}>
                                 <div className="description">
-                                <h3>{burger.name} <p>({burger.quantity})</p></h3>
-                                <p>₹ {burger.price}</p>
+                                    <h3>{burger.name} ({burger.quantity})</h3>
+                                    <p>₹ {burger.price}</p>
                                 </div>
-                                <ul>
+                                
+                                <div className="ingredients">
                                     {burger.ingredients.map((ingredient, i) => (
-                                        <li key={i}>{ingredient}</li>
+                                        <div key={i}>{ingredient}</div>
                                     ))}
-                                </ul>
+                                </div>
                                 <button 
                                     id={`order-${burger._id}`} 
                                     className="cancel-button" 
