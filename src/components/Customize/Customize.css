@@ -1,4 +1,4 @@
-.customize1{
+.customize1 {
     background-image: url("../Home/assets/burger-background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -19,59 +19,59 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .burger-customizer form{
+.burger-customizer form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
-  }
+}
   
-  .burger-customizer h2 {
+.burger-customizer h2 {
     color: white;
     font-size: 24px;
     margin-bottom: 20px;
-  }
+}
   
-  .ingredients{
+.ingredients{
     display: flex;
     justify-content: center;
     flex-direction: row;
-  }
+}
 
-  .ingredients label{
+.ingredients label{
     margin: 0px 25px;
-  }
+}
 
-  .burger-customizer h3 {
+.burger-customizer h3 {
     color: white;
     font-size: 20px;
     margin-top: 20px;
-  }
+}
   
-  .burger-customizer label {
+.burger-customizer label {
     color: white;
     display: block;
     margin-bottom: 10px;
-  }
+}
   
-  .burger-customizer input[type="text"],
-  .burger-customizer input[type="checkbox"] {
+.burger-customizer input[type="text"],
+.burger-customizer input[type="checkbox"] {
     margin-left: 10px;
-  }
+}
   
-  .burger-customizer p {
+.burger-customizer p {
     margin-top: 10px;
     color: white;
-  }
+}
   
-  .burger-customizer button {
+.burger-customizer button {
     padding: 10px;
     color: black;
     font-size: 1rem;
     background-color: orange;
     border-radius: 30px;
     font-family: 'Comic Sans MS', sans-serif;
-  }
+}

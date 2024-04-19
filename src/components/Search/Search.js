@@ -44,7 +44,7 @@ function Search() {
             </div>
 
             <div className="hot-ready">
-                <h2> <span className="hot"> Hot </span> and Ready </h2>
+                <h2> <span className="hot"> Hot </span> and Ready !! </h2>
             </div>
 
             <div className="burger-list">

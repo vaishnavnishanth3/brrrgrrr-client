@@ -6,10 +6,10 @@ import burgerImage from "./assets/burger-image.jpeg";
 import cityImage from "./assets/cities.jpeg";
 
 function About() {
+    
     return (
         <div className="about">
-            <h1 className="title"> About <span className="app-name"> Brrrgrrr </span>
-            </h1>
+            <h1 className="title"> About <span className="app-name"> Brrrgrrr </span> </h1>
             
             <div className="content">
                 <p>Welcome to Brrrgrrr Burger Company, where passion for great taste meets dedication to quality ingredients! At Brrrgrrr, we believe that every bite should be an experience worth savoring. That's why we're committed to crafting the finest gourmet gurgers that tantalize your taste buds and leave you craving for more. Our journey began with a simple vision: to reinvent the classic gurger, elevating it to new heights with innovative flavors and premium ingredients. Every gurger we serve is a masterpiece, carefully handcrafted with love and attention to detail. What sets us apart is our unwavering commitment to quality. We source| only the freshest, locally-sourced ingredients, ensuring that every bite bursts with flavor and goodness. From our succulent beef patties to our artisanal buns and signature sauces, every component is thoughtfully selected to deliver a culinary experience like no other. But it's not just about the food—it's about the experience. </p>

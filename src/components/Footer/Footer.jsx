@@ -16,12 +16,10 @@ function Footer() {
                    <img src={Logo} alt="Logo" />
                 </div>
 
-                <div className="name"> Vaishnav </div>
-
-                <div className="description"> (Designer and Developer) </div>
+                <div className="name"> <p>Vaishnav (Designer and Developer)</p></div>
             </div>
 
-            <div className="copyrights"> © Copyrights 2024 Vaishnav Nishanth A V ® </div>
+            <div className="copyrights"> <h5>© Copyrights 2024 Vaishnav Nishanth A V ® </h5></div>
 
             <div className="contact">
                 <div className="email">

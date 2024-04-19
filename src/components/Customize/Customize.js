@@ -9,7 +9,8 @@ function Customize() {
     const [burgerName, setBurgerName] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [quantity, setQuantity] = useState('');
-    const {setUserData}=useContext(Context)
+    const {setUserData}=useContext(Context);
+
     function handleBurgerNameChange (event) {
         setBurgerName(event.target.value);
     };
@@ -48,8 +49,8 @@ function Customize() {
         
             axios.post(URL , { id: userID, burgerName, ingredients, quantity })
             .then((res)=> {
-                setUserData(prev=>{
-                    return {userData:{...prev.userData,customizedBurgers:res.data.custom}}
+                setUserData((prev) => {
+                    return {userData:{...prev.userData,customizedBurgers:res.data.custom}};
                 })
                 setDefault();
                 document.querySelectorAll('h2')[0].innerHTML = "Customized Burger(s) Added";
@@ -61,8 +62,8 @@ function Customize() {
             const target = document.querySelectorAll('h2')[0];
             target.innerHTML="Please login to make orders!";
             target.style.color = "red";
-        }
-    }
+        };
+    };
 
     return (
         <div className="customize1">

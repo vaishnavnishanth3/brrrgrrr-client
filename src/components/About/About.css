@@ -1,6 +1,6 @@
 .about {
     margin: 20px;
-    margin-left: 30px; /* Adjusted left margin for smaller screens */
+    margin-left: 30px;
 }
 
 .title {
@@ -21,28 +21,28 @@
 }
 
 .content {
-    margin: 20px; /* Reduced margin for smaller screens */
+    margin: 20px;
 }
 
 .content p {
     text-align: left;
     color: white;
-    font-size: 18px; /* Reduced font size for smaller screens */
+    font-size: 18px;
 }
 
 .burger {
     float: right;
-    margin: 10px; /* Reduced margin for smaller screens */
+    margin: 10px;
 }
 
 .city {
     float: left;
-    margin: 10px; /* Reduced margin for smaller screens */
+    margin: 10px;
 }
 
 @media (min-width: 600px) {
     .about {
-        margin-left: 60px; /* Reverted left margin for larger screens */
+        margin-left: 60px;
     }
 
     .content {
@@ -50,11 +50,11 @@
     }
 
     .content p {
-        font-size: 20px; /* Reverted font size for larger screens */
+        font-size: 20px;
     }
 
     .burger,
     .city {
-        margin: 20px; /* Reverted margin for larger screens */
+        margin: 20px;
     }
 }

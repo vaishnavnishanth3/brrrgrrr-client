@@ -5,17 +5,21 @@ import "./Card.css";
 import Context from "../../contextStore/context";
 
 function Card(props) {
+
     const { title, price, image } = props;
     
     const [count, setCount] = useState(0);
+    
     const {
         // eslint-disable-next-line no-unused-vars
         userData,
         setUserData
-    } = useContext(Context)
+    } = useContext(Context);
 
     function handleClick(e) {
+
         const user = JSON.parse(localStorage.getItem('user'));
+        
         if (user) {
             const userID = user.userData.userId;
             const URL = `http://localhost:3001/orders/${userID}`;
@@ -24,9 +28,10 @@ function Card(props) {
     
             axios.post(URL, { id: userID, title, price, image })
                 .then((res) => {
-                    setUserData(prev=>{
+                    setUserData((prev) => {
                         return {userData:{...prev.userData,orders:res.data.orders}}
-                    })
+                    });
+                    
                     e.target.textContent = `Ordered (${count + 1})`;
                     e.target.style.backgroundColor = "green";
                     e.target.style.color = "white";
@@ -36,8 +41,8 @@ function Card(props) {
             e.target.innerText = "Please login to make orders!";
             e.target.style.backgroundColor = "black";
             e.target.style.color = "red";
-        }
-    }
+        };
+    };
 
     return (
         <div className="Card">
@@ -51,6 +56,6 @@ function Card(props) {
             </div>
         </div>
     );
-}
+};
 
 export default Card;

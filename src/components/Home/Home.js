@@ -33,8 +33,8 @@ function Home() {
             target.innerText = "Please login to make orders!";
             target.style.backgroundColor = "black";
             target.style.color = "red";
-        }
-    }
+        };
+    };
 
     return (
         <div>

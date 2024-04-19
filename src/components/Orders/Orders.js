@@ -8,7 +8,7 @@ function Orders() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     
-    const {userData}=useContext(Context);
+    const {userData} = useContext(Context);
 
     function handleCancel(id) {
         try {
@@ -16,27 +16,6 @@ function Orders() {
             const orderID = id;
     
             const URL = `http://localhost:3001/orders/cancel/${userID}/${orderID}`;
-            axios.delete(URL)
-                .then(() => {
-                    const target = document.getElementById(`order-${orderID}`);
-                    target.innerHTML = "Order Canceled!"
-                    target.style.backgroundColor = "red"
-                    target.style.color = "black";
-                })
-                .catch(error => {
-                    console.log("Error canceling order:", error);
-                });
-        } catch (error) {
-            console.error("Error canceling order:", error);
-        }
-    }
-
-    function handleCancelCustomize(id) {
-        try {
-            const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
-            const orderID = id;
-    
-            const URL = `http://localhost:3001/customize/cancel/${userID}/${orderID}`;
             
             axios.delete(URL)
                 .then(() => {
@@ -50,15 +29,37 @@ function Orders() {
                 });
         } catch (error) {
             console.error("Error canceling order:", error);
-        }
-    }
+        };
+    };
+
+    function handleCancelCustomize(id) {
+        try {
+            const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
+            const orderID = id;
+    
+            const URL = `http://localhost:3001/customize/cancel/${userID}/${orderID}`;
+            
+            axios.delete(URL)
+                .then(() => {
+                    const target = document.getElementById(`order-${orderID}`);
+                    target.innerHTML = "Order Canceled!";
+                    target.style.backgroundColor = "red";
+                    target.style.color = "black";
+                })
+                .catch(error => {
+                    console.log("Error canceling order:", error);
+                });
+        } catch (error) {
+            console.error("Error canceling order:", error);
+        };
+    };
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user && user.userData) {
             setIsLoggedIn(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        }},[])
+        }},[]);
 
     return (
         <div className="orders">
@@ -134,6 +135,6 @@ function Orders() {
             )}
         </div>
     );
-}
+};
 
 export default Orders;

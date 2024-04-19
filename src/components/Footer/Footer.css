@@ -2,7 +2,7 @@
     background-color: black;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     color: white;
     height: 25vh;
 }
@@ -12,14 +12,19 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    
+    gap: 5px; 
 }
 
 .copyrights{
     color: grey;
     display: flex;
     align-items: center;
+}
+
+.copyrights h5{
+    display:flex;
+    justify-content: flex-start;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
 .contact a{
@@ -43,8 +48,19 @@
     font-size: 1.2rem;
 }
 
-.description{
-    margin-left: 20px;
+.credits img{
+    width: 20px;
+    border-radius: 20%;
+}
+
+.copyrights:hover, .credits div:hover{
+    transform: scale(1.05);
+    transition: transform 0.4s;
+}
+
+.credits img, .contact div:hover {
+    transform: scale(1.25);
+    transition: transform 0.4s;    
 }
 
 @media (max-width: 800px) {
@@ -55,14 +71,3 @@
         gap: 20px;
     }
 }
-
-.credits img{
-    width: 20px;
-    border-radius: 20%;
-}
-
-.copyrights:hover, .contact div:hover, .credits div:hover{
-    transform: scale(1.15);
-    transition: transform 0.4s;
-}
-

@@ -6,10 +6,12 @@ import './Login.css';
 import Context from '../../contextStore/context';
 
 function Login() {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+
     const navigate = useNavigate();
     const {setUserData} = useContext(Context);
     
@@ -29,8 +31,8 @@ function Login() {
         } catch (error) {
             console.error('Login error: ', error.response.data.message);
             setMessage(error.response.data.message);
-        }
-    }
+        };
+    };
 
     return (
         <div className="account">
@@ -67,6 +69,6 @@ function Login() {
             </div>
         </div>
     );
-}
+};
 
 export default Login;

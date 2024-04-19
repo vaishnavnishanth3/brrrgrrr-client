@@ -2,7 +2,7 @@
     background-image: url("../Home/assets/burger-background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover; /* Changed from background-size: 100%; to cover */
+    background-size: cover;
     display: flex;
     flex-direction: column;
     gap: 30px;
