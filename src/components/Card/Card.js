@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import "./Card.css";
@@ -8,11 +8,17 @@ function Card(props) {
     const price = props.price;
     const image = props.image;
     
+    const [count, setCount] = useState(0);
+
     function handleClick (e) {
         const userID = JSON.parse(localStorage.getItem('user')).userData.userId;
         const URL = `http://localhost:3001/orders/${userID}`;
-      
         e.preventDefault();
+        setCount(count+1);
+        const target = document.querySelector(".order-button");
+        target.style.backgroundColor = "green";
+        target.style.color = "white";
+        target.innerHTML = `Ordered (${count+1})`
 
         axios.post(URL , { id: userID, title, price, image })
         .then(()=> console.log("Order Submitted"))
