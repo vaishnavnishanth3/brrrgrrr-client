@@ -26,7 +26,7 @@ function Search() {
         const filtered = burgers.filter(burger => burger.name.toLowerCase().includes(query.toLowerCase()));
         setFilteredBurgers(filtered);
     };
-
+    
     return (
         <div className="search1">
             <h1>Brrrgrrr for your favourite Burger!</h1>

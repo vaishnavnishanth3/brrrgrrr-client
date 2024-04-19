@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import './Login.css';
+import Context from '../../contextStore/context';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -10,12 +11,13 @@ function Login() {
     const [message, setMessage] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const navigate = useNavigate();
-
+    const {setUserData}=useContext(Context)
     async function handleLogin(e) {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3001/account/login', { email, password });
             const userData = response.data;
+            setUserData(userData)
             localStorage.setItem('user', JSON.stringify({ userData }));
             setLoggedIn(true);
             setEmail('');

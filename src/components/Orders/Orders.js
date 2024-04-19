@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
 import "./Orders.css";
+import Context from "../../contextStore/context";
 
 function Orders() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [orders, setOrders] = useState([]);
     const [customizedBurgers, setCustomizedBurgers] = useState([]);
-
+    
+    const {userData}=useContext(Context)
     function handleCancel(id) {
         try {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
@@ -30,7 +32,7 @@ function Orders() {
                         });
                 })
                 .then(() => {
-                    const target = document.querySelectorAll('.cancel-button')[0];
+                    const target = document.getElementById(`order-${orderID}`);
                     target.innerHTML = "Order Canceled!"
                     target.style.backgroundColor = "red"
                     target.style.color = "black";
@@ -42,9 +44,10 @@ function Orders() {
             console.error("Error canceling order:", error);
         }
     }
-    
+      
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
+        console.log(userData)
         if (user && user.userData) {
             setIsLoggedIn(true);
             const userOrders = user.userData.orders;
@@ -55,16 +58,16 @@ function Orders() {
             console.log(userOrders);
             console.log("customizedOrders: ")
             console.log(customizedBurgers)
-        }},[customizedBurgers])
+        }},[userData])
 
     return (
         <div className="orders">
-            {isLoggedIn && orders.length > 0 ? (
+            {isLoggedIn && userData && orders.length > 0 ? (
                 <div>
                     <h1>Order Details</h1>
                     <div>
                         <div className="orders-made">
-                            {orders.map((order, index) => {
+                            {userData.userData.orders.map((order, index) => {
                                 return (
                                     <div className="individual-order" key={index}>
                                         <div className="description">
@@ -75,6 +78,7 @@ function Orders() {
                                             <img src={order.image} alt={order.name} />
                                         </div>
                                         <button 
+                                            id={`order-${order._id}`}
                                             className="cancel-button" 
                                             onClick={() => { handleCancel(order._id) }}>
                                             Cancel Order
@@ -103,11 +107,11 @@ function Orders() {
                 </div>
             )}
 
-            {customizedBurgers.length > 0 && (
+            {userData && userData.userData.customizedBurgers.length > 0 &&  (
                 <div className="orders1">
                     <h1>Customized Burgers</h1>
                     <div className="orders-listed">
-                        {customizedBurgers.map((burger, index) => 
+                        {userData.userData.customizedBurgers.map((burger, index) => 
             
                             (
                             <div className="individual-order" key={index}>
