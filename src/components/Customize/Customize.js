@@ -53,14 +53,17 @@ function Customize() {
                 setUserData((prev) => {
                     return {userData:{...prev.userData,customizedBurgers:res.data.custom}};
                 })
+                const target = document.getElementById('customize-button');
+                target.innerHTML = "Customized Burger(s) Added";
+                target.style.color = "white";
+                target.style.backgroundColor = "green";
                 setDefault();
-                document.querySelectorAll('h2')[0].innerHTML = "Customized Burger(s) Added";
             })
             .catch(error => { console.log(error) });
         } else {
             e.preventDefault();
             setDefault();
-            const target = document.querySelectorAll('h2')[0];
+            const target = document.getElementById('customize-button');
             target.innerHTML="Please login to make orders!";
             target.style.color = "red";
         };
@@ -110,7 +113,7 @@ function Customize() {
         
                     <p> Ingredients: {ingredients.join(', ')} </p>
                     
-                    <button onClick={handleSubmit}> Let's Brrrgrrr! </button>
+                    <button id="customize-button" onClick={handleSubmit}> Let's Brrrgrrr! </button>
                 </form>
             </div>
         </div>
