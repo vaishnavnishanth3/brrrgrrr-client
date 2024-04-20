@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import Context from "./context";
 import axios from "axios";
+
+import Context from "./context";
+import API from "../constants";
+
 
 function ContextProvider(props) {
     
@@ -13,7 +16,7 @@ function ContextProvider(props) {
 
     useEffect(() => {
         if(localStorage.getItem('user'))
-            axios.get(`http://localhost:3001/orders/${JSON.parse(localStorage.getItem("user")).userData.userId}`)
+            axios.get(`${API}/orders/${JSON.parse(localStorage.getItem("user")).userData.userId}`)
             .then(res=>{
                 const user = JSON.parse(localStorage.getItem("user"))
                 setUserData({userData:{...user.userData,orders:res.data.order,customizedBurgers:res.data.customizedBurgers}})

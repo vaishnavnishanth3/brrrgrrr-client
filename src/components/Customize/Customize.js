@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./Customize.css";
 import Context from '../../contextStore/context';
+import API from "../../constants";
 
 function Customize() {
 
@@ -43,7 +44,7 @@ function Customize() {
         
         if (user){
             const userID = user.userData.userId;
-            const URL = `http://localhost:3001/customize/${userID}`;
+            const URL = `${API}/customize/${userID}`;
         
             e.preventDefault();
         

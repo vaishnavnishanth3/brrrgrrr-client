@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./Orders.css";
 import Context from "../../contextStore/context";
+import API from "../../constants"
 
 function Orders() {
 
@@ -15,7 +16,7 @@ function Orders() {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
             const orderID = id;
     
-            const URL = `http://localhost:3001/orders/cancel/${userID}/${orderID}`;
+            const URL = `${API}/orders/cancel/${userID}/${orderID}`;
             
             axios.delete(URL)
                 .then(() => {
@@ -37,7 +38,7 @@ function Orders() {
             const userID = JSON.parse(localStorage.getItem("user")).userData.userId;
             const orderID = id;
     
-            const URL = `http://localhost:3001/customize/cancel/${userID}/${orderID}`;
+            const URL = `${API}/customize/cancel/${userID}/${orderID}`;
             
             axios.delete(URL)
                 .then(() => {

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import "./Card.css";
 import Context from "../../contextStore/context";
+import API from "../../constants"
 
 function Card(props) {
 
@@ -22,7 +23,7 @@ function Card(props) {
         
         if (user) {
             const userID = user.userData.userId;
-            const URL = `http://localhost:3001/orders/${userID}`;
+            const URL = `${API}/orders/${userID}`;
             
             setCount(prevCount => prevCount + 1);
     

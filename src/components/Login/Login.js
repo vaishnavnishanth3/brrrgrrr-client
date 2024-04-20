@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './Login.css';
 import Context from '../../contextStore/context';
+import API from "../../constants"
 
 function Login() {
 
@@ -18,7 +19,7 @@ function Login() {
     async function handleLogin(e) {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/account/login', { email, password });
+            const response = await axios.post(`${API}/account/login`, { email, password });
             const userData = response.data;
             setUserData({userData})
             localStorage.setItem('user', JSON.stringify({ userData }));

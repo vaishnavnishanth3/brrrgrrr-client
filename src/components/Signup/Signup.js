@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./Signup.css";
+import API from "../../constants";
 
 function Signup() {
 
@@ -11,7 +12,7 @@ function Signup() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const URL = 'http://localhost:3001/account/signup';
+    const URL = `${API}/account/signup`;
 
     function handleSignup (e) {
         e.preventDefault();

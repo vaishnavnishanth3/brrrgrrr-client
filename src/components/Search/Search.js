@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card/Card";
+
 import "./Search.css";
+import API from "../../constants";
 
 function Search() {
     const [burgers, setBurgers] = useState([]);
     const [filteredBurgers, setFilteredBurgers] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 
-    const URL = "http://localhost:3001/burgers";
+    const URL = `${API}/burgers`;
 
     useEffect(() => {
         fetch(URL)
@@ -19,6 +21,7 @@ function Search() {
             .catch(error => {
                 console.log("Error Fetching burgers: " + error);
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function handleSearch (query) {

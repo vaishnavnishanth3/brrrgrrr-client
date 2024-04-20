@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
+import API from "../../constants";
 
 import bookMyShow from "./assets/bookmyshow-logo.png";
+
 
 function Home() {
 
@@ -14,7 +16,7 @@ function Home() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             const userID = user.userData.userId;
-            const URL = `http://localhost:3001/orders/${userID}`;
+            const URL = `${API}/orders/${userID}`;
             
             setCount(prevCount => prevCount + 3);
             
