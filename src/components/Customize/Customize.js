@@ -66,6 +66,7 @@ function Customize() {
             const target = document.getElementById('customize-button');
             target.innerHTML="Please login to make orders!";
             target.style.color = "red";
+            target.style.backgroundColor = "black";
         };
     };
 
