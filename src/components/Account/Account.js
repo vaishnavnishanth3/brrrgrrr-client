@@ -44,7 +44,7 @@ function Account() {
                     </div>
                     
                     <div className="column2">
-                        <img src="https://th.bing.com/th/id/OIP.Li2rEtHXPADML-vULl6iowHaH0?rs=1&pid=ImgDetMain" alt="signin"/>
+                        <img src="https://thumbs.dreamstime.com/z/pop-art-businessman-laptop-eating-burger-talking-phone-vector-illustration-78146153.jpg" alt="signin"/>
                     </div>
                 </div>
             </div>
