@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import templateImage from "./assets/template-image.webp";
 
 import "./Account.css";
 
@@ -20,10 +21,7 @@ function Account() {
                     </div>
 
                     <div className='column2'>
-                        <img
-                            src='https://th.bing.com/th/id/OIP.Li2rEtHXPADML-vULl6iowHaH0?rs=1&pid=ImgDetMain'
-                            alt='signin'
-                        />
+                        <img src={templateImage} alt='signin' />
                     </div>
                 </div>
             </div>
@@ -47,10 +45,7 @@ function Account() {
                     </div>
 
                     <div className='column2'>
-                        <img
-                            src='https://thumbs.dreamstime.com/z/pop-art-businessman-laptop-eating-burger-talking-phone-vector-illustration-78146153.jpg'
-                            alt='signin'
-                        />
+                        <img src={templateImage} alt='signin' />
                     </div>
                 </div>
             </div>
