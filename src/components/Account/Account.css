@@ -1,4 +1,4 @@
-.action-area{
+.action-area {
     margin: 40px;
     display: flex;
     flex-direction: row;
@@ -12,7 +12,7 @@
     background-size: cover;
 }
 
-.column1{
+.column1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -20,17 +20,17 @@
     gap: 21%;
 }
 
-.column1 button{
+.column1 button {
     width: 100px;
     height: 70px;
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
     font-size: 1.3rem;
     background-color: orange;
     color: black;
     border-radius: 5px;
 }
 
-.column2 img{
+.column2 img {
     border-radius: 20%;
     width: auto;
     height: auto;
@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 1100px) {
-    .action-area{
+    .action-area {
         display: flex;
         justify-content: center;
         flex-direction: column-reverse;
@@ -47,12 +47,12 @@
         height: 25%;
     }
 
-    .column2 img{
+    .column2 img {
         width: 400px;
     }
 
-    .column1{
-        display:flex;
+    .column1 {
+        display: flex;
         justify-content: center;
         left: 0%;
     }

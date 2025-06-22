@@ -1,8 +1,8 @@
 import React from "react";
 
 const Context = React.createContext({
-    orders:[],
-    setOrders:()=>{}
+    orders: [],
+    setOrders: () => {},
 });
 
 export default Context;

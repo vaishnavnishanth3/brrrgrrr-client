@@ -1,32 +1,32 @@
-.Card img{
+.Card img {
     margin: 10px 20px;
     width: 70%;
     height: auto;
-    max-width: 200px; 
+    max-width: 200px;
     max-height: 150px;
     border-radius: 20px;
 }
 
-.Card h2{
+.Card h2 {
     color: Orange;
 }
 
-.card-body{
+.card-body {
     color: white;
 }
 
-.card-body h5{
-    font-family: 'Comic Sans MS', sans-serif;
+.card-body h5 {
+    font-family: "Comic Sans MS", sans-serif;
     color: orange;
     font-size: 1.2rem;
 }
 
-.card-price{
+.card-price {
     font-size: 1.5rem;
     color: white;
 }
 
-.card-image{
+.card-image {
     min-height: 200px;
     display: flex;
     justify-content: center;

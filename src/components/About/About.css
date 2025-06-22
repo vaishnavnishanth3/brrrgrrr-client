@@ -12,11 +12,11 @@
     color: #00ffff;
     padding: 5px;
     border-radius: 10px;
-    font-family: 'Comic Sans MS';
+    font-family: "Comic Sans MS";
 }
 
 .app-name:hover {
-    border-bottom: 1px solid #00FFFF;
+    border-bottom: 1px solid #00ffff;
     transition: border-bottom 1.5s ease;
 }
 

@@ -1,4 +1,4 @@
-.not-found{
+.not-found {
     background-image: url("../Home/assets/burger-background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-.notfound-content{
+.notfound-content {
     background-color: rgba(0, 0, 0, 0.6);
     border: 1px darkgrey solid;
     display: flex;
@@ -19,9 +19,9 @@
     padding: 40px;
 }
 
-.notfound-content h1{
+.notfound-content h1 {
     color: orange;
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
 }
 
 .notfound-content button {

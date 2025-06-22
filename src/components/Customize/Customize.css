@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
     height: 80ch;
 }
 
@@ -28,20 +28,20 @@
     justify-content: center;
     gap: 10px;
 }
-  
+
 .burger-customizer h2 {
     color: white;
     font-size: 24px;
     margin-bottom: 20px;
 }
-  
-.ingredients{
+
+.ingredients {
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
 
-.ingredients label{
+.ingredients label {
     margin: 0px 25px;
 }
 
@@ -50,28 +50,28 @@
     font-size: 20px;
     margin-top: 20px;
 }
-  
+
 .burger-customizer label {
     color: white;
     display: block;
     margin-bottom: 10px;
 }
-  
+
 .burger-customizer input[type="text"],
 .burger-customizer input[type="checkbox"] {
     margin-left: 10px;
 }
-  
+
 .burger-customizer p {
     margin-top: 10px;
     color: white;
 }
-  
+
 .burger-customizer button {
     padding: 10px;
     color: black;
     font-size: 1rem;
     background-color: orange;
     border-radius: 30px;
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: "Comic Sans MS", sans-serif;
 }
