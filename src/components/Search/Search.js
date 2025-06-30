@@ -62,9 +62,9 @@ function Search() {
             <div className='burger-list'>
                 {loading && <CircularProgress style={{ color: "orange" }} />}
                 {!loading && filteredBurgers.length === 0 && (
-                    <>
+                    <div className="no-items-container">
                         <p className='no-items'>OOPS! No Items Available</p>
-                    </>
+                    </div>
                 )}
                 {!loading &&
                     filteredBurgers.length !== 0 &&

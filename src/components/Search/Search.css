@@ -5,7 +5,10 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
+    height: 90vh;
     gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .search1 input {
@@ -36,6 +39,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 90vh;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
 .cards {
@@ -56,4 +64,12 @@
 
 .no-items {
     color: orange;
+}
+
+.no-items-container {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 20px;
+    width: 75%;
+    border: 1px solid white;
 }
