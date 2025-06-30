@@ -29,6 +29,7 @@ function Login() {
             const userData = response.data;
             setUserData({ userData });
             localStorage.setItem("user", JSON.stringify({ userData }));
+            localStorage.setItem("token", userData.token);
             setLoggedIn(true);
             setEmail("");
             setPassword("");
